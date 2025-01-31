@@ -21,6 +21,7 @@
     }
     #map {
       height: 80vh;
+      z-index: 10;
     }
     #controls {
       margin: 10px;
@@ -43,10 +44,51 @@
     label {
       padding: 5px 1px;
     }
+    .tooltip-button {
+      float: right;
+      position: relative;
+      z-index:100;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      font-size: 16px;
+      cursor: pointer;
+      text-align: center;
+      line-height: 30px;
+    }
+
+    /* Tooltip container */
+    .tooltip-button .tooltip {
+      visibility: hidden;
+      background-color: #333333;
+      color: white;
+      text-align: center;
+      border-radius: 5px;
+      padding: 7px 10px;
+      position: fixed; /* Fixed to appear relative to the viewport */
+      top: 45%; /* Center vertically */
+      left: 50%; /* Center horizontally */
+      transform: translate(-50%, -50%); /* Center the tooltip exactly */
+      z-index: 1000; /* Ensure it appears on top */
+    }
+
+    /* Show the tooltip on hover */
+    .tooltip-button:hover .tooltip {
+      visibility: visible;
+    }
   </style>
 </head>
 <body>
   <div id="map"></div>
+  <button class="tooltip-button">
+    ?
+    <span class="tooltip">Either upload a GeoJSON representation of your route using the "Load GeoJSON" button, or draw it using the editing tools on the left - you can draw a line route or  add markers with or without annotations. (On mobile, when drawing a line route, you may need to press and hold for a second for intermediate waypoints, to avoid accidentally ending the route early.) You can also edit any objects already drawn (or loaded) on the map. When you're done, you can save using the "Save GeoJSON" button. This will save, in GeoJSON format, any layers you have drawn, with filename corresponding to the selected route and today's date.</p>
+
+<p>If there is a route drawn/loaded on the map, you can click the "Open Google Maps" button to open navigation between all the waypoints of the route in Google Maps. Note that if multiple routes are drawn, only the first will be navigated, so make sure you don't accidentally have more than one on the screen at once. (You can remove individual layers, or all layers at once, using a control on the left, to ensure this doesn't happen.)</p></span>
+  </button>
   <div id="controls">
   <label for="route">Route:</label>
   <select id="route">
