@@ -73,8 +73,9 @@
       left: 50%; /* Center horizontally */
       transform: translate(-50%, -50%); /* Center the tooltip exactly */
       z-index: 1000; /* Ensure it appears on top */ 
-      font-size: 1.8vw;
-      line-height: 1.9vw;
+      font-size: 2vw;
+      line-height: 2.1vw;
+      width: 70vw;
     }
 
     /* Show the tooltip on hover */
