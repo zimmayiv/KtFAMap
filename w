@@ -250,12 +250,8 @@
       const today = new Date();
       const dateString = today.toISOString().slice(0, 10).replace(/-/g, '');
       const route = document.getElementById('route').value;
-      const defaultFilename = `${route}-${dateString}.geojson`;
-      const userFilename = prompt('Enter filename:', defaultFilename);
-      if (userFilename) {
-         a.download = userFilename.endsWith('.geojson') ? userFilename : userFilename + '.geojson';
-         a.click();
-      }
+      a.download = route + '-' + dateString + '.geojson';
+      a.click();
 
       URL.revokeObjectURL(url);
     });
